@@ -1,0 +1,39 @@
+---
+title: "Advanced Informatics Week 2 lab"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(reticulate)
+use_python("/Users/liz/miniconda3/envs/new_env/bin/python",required = T)
+knitr::opts_chunk$set(echo = TRUE)
+mpl = reticulate::import("matplotlib")
+sns = reticulate::import("seaborn")
+```
+
+```{r}
+library(nycflights13)
+data(flights)
+```
+
+```{python}
+import pandas
+print(type(r.flights))
+print(r.flights)
+```
+
+```{r}
+data(mtcars)
+```
+
+```{python}
+print(r.mtcars.head())
+```
+
+```{python}
+import seaborn as sns
+import matplotlib.pyplot as plt
+g = sns.FacetGrid(r.mtcars, col="cyl")
+g.map(sns.scatterplot,"wt","mpg");
+plt.show()
+```
